@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Title";
+    src: url("../../public/fonts/Neglige.otf");
+  }
+
+  @font-face {
+    font-family: "Body";
+    src: url("../../public/fonts/NeueMontreal_Medium.otf");
+  }
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    font-family: "PP Acma";
+    background: #000;
+  }
+}

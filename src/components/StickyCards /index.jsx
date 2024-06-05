@@ -104,7 +104,7 @@ const StickyCards = () => {
             "bg-[rgba(0,0,0,0.0)]",
             "-mr-2",
             "cursor-pointer",
-            { disabled: panelIndexes.prev < 1 }
+            { "disabled cursor-default opacity-50": panelIndexes.prev < 1 }
           )}
         >
           &uarr;
@@ -119,7 +119,10 @@ const StickyCards = () => {
             "text-center",
             "bg-[rgba(0,0,0,0.0)]",
             "cursor-pointer",
-            { disabled: panelIndexes.next > totalSlides }
+            {
+              "disabled cursor-default opacity-50":
+                panelIndexes.next > totalSlides,
+            }
           )}
           onClick={panelDown}
         >
@@ -152,7 +155,8 @@ const StickyCards = () => {
             className={panel.class}
             index={i}
             id={`panel_${i + 1}`}
-            src={`/images/${panel.src}`}
+            // src={`/images/${panel.src}`}
+            src={panel.src}
             title={panel.title}
           />
         ))}
@@ -164,19 +168,9 @@ const StickyCards = () => {
 const imgProps = {
   alt: "",
   style: { objectPosition: "center center" },
-  className: cn(
-    "absolute",
-    "top-0",
-    "left-0",
-    "w-full",
-    "h-screen",
-    "center",
-    "z-[1]",
-    // "object-fit"
-  ),
-  width: 100,
-  height: 100,
-  priority: true,
+  className: cn("object-cover"),
+  fill: true,
+  // priority: true,
 };
 
 function Panel({ className, title, id, src, index }) {
@@ -267,7 +261,33 @@ function Panel({ className, title, id, src, index }) {
             />
           </div>
         ) : (
-          <Image {...imgProps} src={src} />
+          <div
+            className={cn(
+              "absolute",
+              "top-0",
+              "left-0",
+              "w-full",
+              "h-screen",
+              "z-[1]",
+              "overflow-hidden"
+            )}
+          >
+            <Image {...imgProps} src={src} />
+          </div>
+          // <img
+          //   alt=""
+          //   src={src}
+          //   className={cn(
+          //     "absolute",
+          //     "top-0",
+          //     "left-0",
+          //     "w-full",
+          //     "h-screen",
+          //     "center",
+          //     "z-[1]"
+          //     // "object-fit"
+          //   )}
+          // />
         )}
       </div>
     </div>

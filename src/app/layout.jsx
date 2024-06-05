@@ -1,9 +1,7 @@
-import { Inter, Purple_Purse } from "next/font/google";
+import { Purple_Purse } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
-
-const inter = Inter({ subsets: ["latin"] });
 
 const pp_acma = Purple_Purse({
   weight: ["400"],
@@ -20,7 +18,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={cn("text-white", pp_acma.className)}>
         <Navbar />
-        <main className="mt-[20vh] min-h-screen">{children}</main>
+        {/* <main className="mt-[20vh] min-h-screen">{children}</main> */}
+        {children}
       </body>
     </html>
   );
